@@ -35,7 +35,6 @@ jobs:
         image:
           - artemshestakov/almalinux-8-docker
           - geerlingguy/docker-centos8-ansible
-          - geerlingguy/docker-rockylinux8-ansible
           - artemshestakov/oraclelinux-8-docker
           - geerlingguy/docker-debian9-ansible
           - geerlingguy/docker-debian10-ansible
