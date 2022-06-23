@@ -14,3 +14,6 @@ rules:
   comments:
     require-starting-space: false
   line-length: disable
+  trailing-spaces:
+    ignore: |
+      /files/queries.yml
