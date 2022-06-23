@@ -1,5 +1,6 @@
-# EPython
+# Python
 .venv/
+__pycache__
 
 # Other
 .DS_Store
