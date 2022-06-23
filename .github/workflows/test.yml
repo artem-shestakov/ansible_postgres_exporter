@@ -6,10 +6,6 @@ name: CI
     branches:
       - master
 
-defaults:
-  run:
-    working-directory: 'geerlingguy.docker'
-
 jobs:
   lint:
     name: Lint
