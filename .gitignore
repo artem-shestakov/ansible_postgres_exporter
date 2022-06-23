@@ -1,0 +1,5 @@
+# EPython
+.venv/
+
+# Other
+.DS_Store

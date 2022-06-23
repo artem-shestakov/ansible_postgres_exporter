@@ -1,0 +1,18 @@
+---
+postgres_exporter_user: postgres
+postgres_exporter_version: "0.10.1"
+postgres_exporter_checksum: "5344afe06a90c3cbd52803d56031bfcbcff78b56448e16c9228697ea0a2577b7"
+
+prometheus_exporters_dir: "/opt/prometheus/exporters"
+postgres_exporter_dist_dir: "{{ prometheus_exporters_dir }}"
+postgres_exporter_query_dir: "/etc/postgres_exporter"
+postgres_exporter_config_file: /etc/default/postgres_exporter
+
+postgres_exporter_url: "https://github.com/prometheus-community/postgres_exporter/releases/download/v{{ postgres_exporter_version }}/postgres_exporter-{{ postgres_exporter_version }}.linux-amd64.tar.gz"
+
+
+postgres_exporter_data_source_name: "user=postgres host=/var/run/postgresql/ sslmode=disable"
+postgres_exporter_queries: "queries.yml"
+postgres_exporter_flags:
+  - '--auto-discover-databases'
+  - '--extend.query-path={{ postgres_exporter_query_dir }}/queries.yml'

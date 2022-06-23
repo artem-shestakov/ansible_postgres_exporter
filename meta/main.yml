@@ -1,0 +1,28 @@
+---
+galaxy_info:
+  role_name: postgres_exporter
+  namespace: artem_shestakov
+  author: Artem Shestakov
+  description: Install Prometheus PostgreSQL Exporter
+
+  license: GPLv3
+
+  min_ansible_version: 2.0
+
+  platforms:
+    - name: EL
+      versions:
+        - 8
+    - name: Ubuntu
+      versions:
+        - bionic
+        - focal
+    - name: Debian
+      versions:
+        - stretch
+        - buster
+
+  galaxy_tags:
+    - prometheus
+    - exporter
+    - postgresql

@@ -1,0 +1,80 @@
+---
+dependency:
+  name: shell
+  command: ansible-galaxy install geerlingguy.postgresql
+driver:
+  name: docker
+platforms:
+  - name: centos8
+    image: geerlingguy/docker-centos8-ansible
+    pull: true
+    pre_build_image: true
+    override_command: false
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: debian9
+    image: geerlingguy/docker-debian9-ansible
+    pull: true
+    pre_build_image: true
+    override_command: false
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: debian10
+    image: geerlingguy/docker-debian10-ansible
+    pull: true
+    pre_build_image: true
+    override_command: false
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: ubuntu18.04
+    image: geerlingguy/docker-ubuntu1804-ansible
+    pull: true
+    pre_build_image: true
+    override_command: false
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: ubuntu20.04
+    image: geerlingguy/docker-ubuntu2004-ansible
+    pull: true
+    pre_build_image: true
+    override_command: false
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      fact_caching: jsonfile
+      fact_caching_connection: $MOLECULE_EPHEMERAL_DIRECTORY/.facts
+      fact_caching_timeout: 600
+      gather_timeout: 20
+      interpreter_python: auto
+verifier:
+  name: testinfra
+  oprions:
+    connection: docker
+    v: 2
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
