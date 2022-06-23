@@ -2,5 +2,6 @@
 exclude_paths:
   - molecule/
   - meta/
-warn_list:  # or 'skip_list' to silence them completely
-  - ignore-errors
+  - .github/
+# warn_list:  # or 'skip_list' to silence them completely
+#   - ignore-errors

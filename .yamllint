@@ -17,3 +17,6 @@ rules:
   trailing-spaces:
     ignore: |
       /files/queries.yml
+  truthy:
+    ignore: |
+      /.github/**

@@ -59,4 +59,4 @@ jobs:
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
-          MILECULE_PLATFORM_IMAGE: ${{ matrix.image }}
+          MOLECULE_PLATFORM_IMAGE: ${{ matrix.image }}
