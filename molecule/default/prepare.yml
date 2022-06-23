@@ -3,14 +3,14 @@
   tasks:
     - name: Update package cache (Debian, Ubuntu)
       become: true
-      apt:
+      ansible.builtin.apt:
         update_cache: true
       when: (ansible_os_family | lower) == 'debian'
       ignore_errors: true  # Necessary as snapshot repos expire
 
     - name: Update package cache (Redhat)
       become: true
-      yum:
+      ansible.builtin.yum:
         update_cache: true
       when:
         - (ansible_os_family | lower) == 'redhat'
@@ -18,7 +18,7 @@
 
     - name: Create man directories
       become: true
-      file:
+      ansible.builtin.file:
         path: "{{ item }}"
         owner: root
         group: root

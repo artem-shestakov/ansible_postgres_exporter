@@ -1,7 +1,7 @@
 ---
 - name: postgres_exporter | create user
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ postgres_exporter_user }}"
     comment: "postgres_exporter user"
     createhome: false
@@ -13,7 +13,7 @@
 
 - name: postgres_exporter | create exporter directories
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     mode: '0755'
     state: directory
@@ -23,7 +23,7 @@
 
 - name: postgres_exporter | create logs directory
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ postgres_exporter_log_path }}"
     owner: "{{ postgres_exporter_user }}"
     mode: '0750'
@@ -32,15 +32,16 @@
 
 - name: postgres_exporter | download exporter
   become: true
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ postgres_exporter_url }}"
     checksum: sha256:{{ postgres_exporter_checksum }}
     dest: "/tmp/postgres_exporter\
       -{{ postgres_exporter_version }}.linux-amd64.tar.gz"
+    mode: '0644'
 
 - name: postgres_exporter | unarchive postgres_exporter
   become: true
-  unarchive:
+  ansible.builtin.unarchive:
     src: "/tmp/postgres_exporter\
       -{{ postgres_exporter_version }}.linux-amd64.tar.gz"
     dest: "{{ prometheus_exporters_dir }}"
@@ -50,21 +51,19 @@
 
 - name: postgres_exporter | install postgres_exporter to {{ postgres_exporter_dist_dir }}
   become: true
-  file:
+  ansible.builtin.file:
     src: "{{ prometheus_exporters_dir }}/postgres_exporter-{{ postgres_exporter_version }}.linux-amd64/postgres_exporter"
     path: "{{ prometheus_exporters_dir }}/postgres_exporter"
     owner: root
     group: root
     force: true
     state: link
-    # remote_src: true
-    # mode: '0755'
   notify: restart postgres_exporter
 
 - name: postgres_exporter | create config file
   become: true
   become_user: root
-  template:
+  ansible.builtin.template:
     src: "postgres_exporter.default.conf.j2"
     dest: "{{ postgres_exporter_config_file }}"
     owner: root
@@ -75,7 +74,7 @@
 - name: postgres_exporter | copy queries file
   become: true
   become_user: root
-  copy:
+  ansible.builtin.copy:
     src: "{{ postgres_exporter_queries }}"
     dest: "{{ postgres_exporter_query_dir }}/queries.yml"
     owner: "{{ postgres_exporter_user }}"
@@ -88,7 +87,7 @@
 - name: postgres_exporter | start postgres_exporter
   become: true
   become_user: root
-  service:
+  ansible.builtin.service:
     daemon_reload: true
     enabled: true
     name: postgres_exporter
