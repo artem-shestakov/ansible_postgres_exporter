@@ -4,9 +4,6 @@ name: CI
   pull_request:
     branches:
       - master
-  push:
-    branches-ignore:
-      - master
 
 jobs:
   lint:
@@ -38,6 +35,8 @@ jobs:
         image:
           - artemshestakov/almalinux-8-docker
           - geerlingguy/docker-centos8-ansible
+          - geerlingguy/docker-rockylinux8-ansible
+          - artemshestakov/oraclelinux-8-docker
           - geerlingguy/docker-debian9-ansible
           - geerlingguy/docker-debian10-ansible
           - geerlingguy/docker-ubuntu1804-ansible
