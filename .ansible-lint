@@ -1,0 +1,7 @@
+---
+exclude_paths:
+  - molecule/
+  - meta/
+  - .github/
+# warn_list:  # or 'skip_list' to silence them completely
+#   - ignore-errors

@@ -1,6 +1,8 @@
 # Ansible PostgreSQL exporter
 Installs the PostgreSQL Exporter for Prometheus.
 
+## Descriptions
+This role install PostgreSQL exporter in `prometheus_exporter_dir` directory. Full path to binary will be like this one: `/opt/prometheus/exporters/postgres_exporter-0.10.1.linux-amd64/`. Then create soft link from directory with binary to `prometheus_exporter_dir directory. Systemd use this link to start exporter.
 
 ## Role Variables
 
@@ -18,14 +20,14 @@ Installs the PostgreSQL Exporter for Prometheus.
 | `postgres_exporter_flags`| Array of exporter [flags](https://github.com/prometheus-community/postgres_exporter#flags) | ['--auto-discover-databases', '--extend.query-path={{ postgres_exporter_query_dir }}/queries.yml'] |
 
 ## Example Playbook
-
-    - hosts: all
-      roles:
-        - { role: artem_shestakov.postgres_exporter }
+```yaml
+- hosts: all
+  roles:
+    - artem_shestakov.postgres_exporter
+```
 
 ## License
-
 GPLv3
 
 ## Author Information
-
+artem.s.shestakov@gmail.com

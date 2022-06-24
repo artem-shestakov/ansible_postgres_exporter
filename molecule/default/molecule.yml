@@ -6,7 +6,7 @@ driver:
   name: docker
 platforms:
   - name: instance
-    image: ${MILECULE_PLATFORM_IMAGE:-"artemshestakov/almalinux-8-docker:latest"}
+    image: ${MOLECULE_PLATFORM_IMAGE:-"artemshestakov/almalinux-8-docker:latest"}
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
