@@ -2,7 +2,7 @@
 Installs the PostgreSQL Exporter for Prometheus.
 
 ## Descriptions
-This role install PostgreSQL exporter in `prometheus_exporter_dir` directory. Full path will be like this one: `/opt/prometheus/exporters` Then create soft link from this directory to directory
+This role install PostgreSQL exporter in `prometheus_exporter_dir` directory. Full path to binary will be like this one: `/opt/prometheus/exporters/postgres_exporter-0.10.1.linux-amd64/`. Then create soft link from directory with binary to `prometheus_exporter_dir directory. Systemd use this link to start exporter.
 
 ## Role Variables
 

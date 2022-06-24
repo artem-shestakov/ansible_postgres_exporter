@@ -38,6 +38,7 @@ jobs:
           - artemshestakov/oraclelinux-8-docker
           - geerlingguy/docker-debian9-ansible
           - geerlingguy/docker-debian10-ansible
+          - geerlingguy/docker-ubuntu1604-ansible
           - geerlingguy/docker-ubuntu1804-ansible
           - geerlingguy/docker-ubuntu2004-ansible
 
